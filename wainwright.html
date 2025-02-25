@@ -18,33 +18,19 @@
         .wainwright-info p { font-size: 16px; line-height: 1.6; margin: 5px 0; }
         .wainwright-info a { color: #007BFF; text-decoration: none; }
         .wainwright-info a:hover { text-decoration: underline; }
-        /* Tab Styles */
         .tab-container { margin-bottom: 20px; }
         .tab-button { padding: 10px 20px; background-color: #ddd; border: none; cursor: pointer; font-size: 16px; }
         .tab-button.active { background-color: #007BFF; color: white; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        /* Tracker Styles (from your style.css) */
-        #wainwright-tracker { padding-top: 40px; } /* Space for progress bar */
-        #wainwright-tracker #progress-bar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 20px; display: flex; z-index: 1000;
-        }
-        #wainwright-tracker #completed {
-            height: 100%; background-color: green; transition: width 0.3s ease;
-        }
-        #wainwright-tracker #remaining {
-            height: 100%; background-color: red; flex-grow: 1;
-        }
-        #wainwright-tracker #progress-text {
-            position: absolute; width: 100%; height: 100%; text-align: center; color: white; font-weight: bold;
-            line-height: 20px; text-shadow: 1px 1px 2px black; pointer-events: none;
-        }
+        #wainwright-tracker { padding-top: 40px; }
+        #wainwright-tracker #progress-bar { position: fixed; top: 0; left: 0; width: 100%; height: 20px; display: flex; z-index: 1000; }
+        #wainwright-tracker #completed { height: 100%; background-color: green; transition: width 0.3s ease; }
+        #wainwright-tracker #remaining { height: 100%; background-color: red; flex-grow: 1; }
+        #wainwright-tracker #progress-text { position: absolute; width: 100%; height: 100%; text-align: center; color: white; font-weight: bold; line-height: 20px; text-shadow: 1px 1px 2px black; pointer-events: none; }
         #wainwright-tracker #container { display: flex; gap: 20px; max-width: 1200px; margin: 0 auto; }
         #wainwright-tracker #map { height: 500px; width: 70%; border: 1px solid #ccc; }
-        #wainwright-tracker #list {
-            width: 30%; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow-y: auto; max-height: 500px;
-        }
+        #wainwright-tracker #list { width: 30%; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow-y: auto; max-height: 500px; }
         #wainwright-tracker #wainwright-list { list-style: none; padding: 0; }
         #wainwright-tracker #wainwright-list li { padding: 5px 0; }
         #wainwright-tracker .completed { color: green; font-weight: bold; }
@@ -68,7 +54,7 @@
         <div id="info-container"></div>
     </div>
 
-    <div id="tracker" class="tab-content" id="wainwright-tracker">
+    <div id="tracker" class="tab-content">
         <div id="progress-bar">
             <div id="completed"></div>
             <div id="remaining"></div>
@@ -87,14 +73,12 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Wainwright Data (merged and expanded)
         const allWainwrights = [
             { name: "Allen Crags", lat: 54.467, lon: -3.200, completed: false, height: "785m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 3.0, weather: "" },
             { name: "Angletarn Pikes", lat: 54.527, lon: -2.907, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "" },
             { name: "Ard Crags", lat: 54.618, lon: -3.262, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "" },
-            // ... (214 total, abbreviated for brevity)
+            // Abbreviated for brevity - full 214 entries should be here
             { name: "Haystacks", lat: 54.508, lon: -3.248, completed: false, height: "597m", hikeLength: 5, gpxLink: "https://www.walklakes.co.uk/gpx/Haystacks.gpx", osMapLink: "https://osmaps.ordnancesurvey.co.uk/54.507,-3.247", mountainForecast: "https://www.mountain-forecast.com/peaks/Haystacks/forecasts/597", carpark: "Gatesgarth Car Park", postcode: "CA13 9XA", what3words: "///tarns.water.peace", funFacts: "Haystacks was Wainwright's favorite fell, with stunning tarns.", additionalInfo: "Features beautiful tarns and a rugged summit, offering a moderate hike with scrambling sections and breathtaking views over Buttermere.", instagramReel: "https://www.instagram.com/reel/haystacks", time: 2.5, weather: "" },
-            // ... (add remaining Wainwrights as needed)
             { name: "Yoke", lat: 54.456, lon: -2.861, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "" }
         ];
 
@@ -107,234 +91,4 @@
             {name:"Catbells",region:"Central Fells",difficulty:"Easy",scramble:"No",dogFriendly:"Yes",weather:"",height:"451m",hikeLength:3.5,lat:54.568,lon:-3.170,gpxLink:"https://www.walklakes.co.uk/gpx/Catbells.gpx",osMapLink:"https://osmaps.ordnancesurvey.co.uk/54.568,-3.170",mountainForecast:"https://www.mountain-forecast.com/peaks/Catbells/forecasts/451",carpark:"Catbells Car Park",postcode:"CA12 5XP",what3words:"///easy.walk.summit",funFacts:"Perfect for beginners with one of the best views of Derwentwater.",additionalInfo:"A great family hike with rewarding panoramic views from the summit.",instagramReel:"https://www.instagram.com/reel/catbells",time:1.75,completed:false},
             {name:"Bowfell",region:"Southern Fells",difficulty:"Hard",scramble:"Yes",dogFriendly:"No",weather:"",height:"902m",hikeLength:6.5,lat:54.448,lon:-3.126,gpxLink:"https://www.walklakes.co.uk/gpx/Bowfell.gpx",osMapLink:"https://osmaps.ordnancesurvey.co.uk/54.448,-3.126",mountainForecast:"https://www.mountain-forecast.com/peaks/Bowfell/forecasts/902",carpark:"Old Dungeon Ghyll",postcode:"LA22 9JY",what3words:"///fell.rocks.view",funFacts:"Offers stunning views of the Langdale Pikes and beyond.",additionalInfo:"A classic Southern Fells hike with rocky sections and panoramic views.",instagramReel:"https://www.instagram.com/reel/bowfell",time:4.0,completed:false},
             {name:"Haystacks",region:"Western Fells",difficulty:"Moderate",scramble:"Yes",dogFriendly:"Yes",weather:"",height:"597m",hikeLength:5,lat:54.508,lon:-3.248,gpxLink:"https://www.walklakes.co.uk/gpx/Haystacks.gpx",osMapLink:"https://osmaps.ordnancesurvey.co.uk/54.507,-3.247",mountainForecast:"https://www.mountain-forecast.com/peaks/Haystacks/forecasts/597",carpark:"Gatesgarth Car Park",postcode:"CA13 9XA",what3words:"///tarns.water.peace",funFacts:"Haystacks was Wainwright's favorite fell, with stunning tarns.",additionalInfo:"Features beautiful tarns and a rugged summit, offering a moderate hike with scrambling sections and breathtaking views over Buttermere.",instagramReel:"https://www.instagram.com/reel/haystacks",time:2.5,completed:false},
-            {name:"Langdale Pikes",region:"Central Fells",difficulty:"Moderate",scramble:"Yes",dogFriendly:"Yes",weather:"",height:"736m",hikeLength:6,lat:54.456,lon:-3.097,gpxLink:"https://www.walklakes.co.uk/gpx/Langdale_Pikes.gpx",osMapLink:"https://osmaps.ordnancesurvey.co.uk/54.456,-3.097",mountainForecast:"https://www.mountain-forecast.com/peaks/Harrison-Stickle/forecasts/736",carpark:"New Dungeon Ghyll",postcode:"LA22 9JX",what3words:"///pikes.walk.lang",funFacts:"A group of peaks with dramatic profiles visible from miles away.",additionalInfo:"A moderate hike with optional scrambles, offering stunning views over Langdale Valley.",instagramReel:"https://www.instagram.com/reel/langdale_pikes",time:3.25,completed:false},
-            {name:"Coniston Old Man",region:"Southern Fells",difficulty:"Moderate",scramble:"No",dogFriendly:"Yes",weather:"",height:"803m",hikeLength:6.5,lat:54.370,lon:-3.118,gpxLink:"https://www.walklakes.co.uk/gpx/Coniston_Old_Man.gpx",osMapLink:"https://osmaps.ordnancesurvey.co.uk/54.370,-3.118",mountainForecast:"https://www.mountain-forecast.com/peaks/Coniston-Old-Man/forecasts/803",carpark:"Coniston Car Park",postcode:"LA21 8ED",what3words:"///old.man.hike",funFacts:"A classic fell with views over Coniston Water and old mining history.",additionalInfo:"Popular and accessible with a steady climb and stunning views.",instagramReel:"https://www.instagram.com/reel/coniston_old_man",time:3.25,completed:false}
-        ];
-
-        // Weather Fetching
-        async function fetchWeather(lat, lon) {
-            try {
-                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=cloudcover`);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const data = await response.json();
-                const weatherCode = data.current_weather.weathercode;
-                const cloudCover = data.hourly.cloudcover[0];
-
-                const weatherMap = {
-                    0: "Clear", 1: "Sunny", 2: "Partly Cloudy", 3: "Cloudy",
-                    45: "Foggy", 51: "Rainy", 61: "Rainy", 71: "Snowy", 95: "Stormy"
-                };
-                const weather = weatherMap[weatherCode] || "Unknown";
-                const sunsetProbability = Math.round(Math.min(Math.max((cloudCover - 30) / 40, 0), 1) * 100);
-
-                return { weather, sunsetProbability };
-            } catch (error) {
-                console.error(`Error fetching weather for lat:${lat}, lon:${lon}:`, error);
-                return { weather: "Unknown", sunsetProbability: 0 };
-            }
-        }
-
-        async function updateWeather() {
-            const weatherPromises = allWainwrights.map(async (wainwright) => {
-                const result = await fetchWeather(wainwright.lat, wainwright.lon);
-                wainwright.weather = result.weather;
-                wainwright.sunsetProbability = result.sunsetProbability;
-            });
-            const topWeatherPromises = topWainwrights.map(async (wainwright) => {
-                const result = await fetchWeather(wainwright.lat, wainwright.lon);
-                wainwright.weather = result.weather;
-                wainwright.sunsetProbability = result.sunsetProbability;
-            });
-            await Promise.all([...weatherPromises, ...topWeatherPromises]);
-        }
-
-        // Top 10 Tab
-        function displayTopWainwrights() {
-            const topWainwrightsDiv = document.getElementById("top-wainwrights");
-            topWainwrightsDiv.innerHTML = "";
-            const buttons = topWainwrights.map(wainwright => {
-                const button = document.createElement("button");
-                button.className = "button";
-                button.textContent = `${wainwright.name} (${wainwright.weather || 'Loading...'}, ${wainwright.sunsetProbability || 0}%)`;
-                button.onclick = () => { showInfo(wainwright); openTab('info'); };
-                return button;
-            });
-            topWainwrightsDiv.append(...buttons);
-        }
-
-        // Filtered Wainwrights (not used now, kept for reference)
-        function displayWainwrights(filtered = allWainwrights) {
-            const wainwrightListDiv = document.getElementById("wainwright-list");
-            wainwrightListDiv.innerHTML = "";
-            const buttons = filtered.map(wainwright => {
-                const button = document.createElement("button");
-                button.className = "button";
-                button.textContent = `${wainwright.name} (${wainwright.weather || 'Loading...'}, ${wainwright.sunsetProbability || 0}%)`;
-                button.onclick = () => { showInfo(wainwright); openTab('info'); };
-                return button;
-            });
-            wainwrightListDiv.append(...buttons);
-        }
-
-        function applyFilters() {
-            const region = document.getElementById("region-filter").value;
-            const difficulty = document.getElementById("difficulty-filter").value;
-            const scramble = document.getElementById("scramble-filter").value;
-            const dogFriendly = document.getElementById("dog-filter").value;
-            const length = document.getElementById("length-filter").value;
-            let filtered = [...allWainwrights];
-            if (region) filtered = filtered.filter(w => w.region === region);
-            if (difficulty) filtered = filtered.filter(w => w.difficulty === difficulty);
-            if (scramble) filtered = filtered.filter(w => w.scramble === scramble);
-            if (dogFriendly) filtered = filtered.filter(w => w.dogFriendly === dogFriendly);
-            if (length) {
-                filtered = filtered.filter(w => {
-                    if (length === "Short") return w.hikeLength <= 4;
-                    if (length === "Medium") return w.hikeLength > 4 && w.hikeLength <= 7;
-                    if (length === "Long") return w.hikeLength > 7;
-                    return true;
-                });
-            }
-            displayWainwrights(filtered);
-        }
-
-        // Info Tab
-        function showInfo(wainwright) {
-            const infoDiv = document.getElementById("info-container");
-            infoDiv.innerHTML = `
-                <div class="wainwright-info">
-                    <h3>${wainwright.name}</h3>
-                    <p><strong>Region:</strong> ${wainwright.region || 'N/A'}</p>
-                    <p><strong>Difficulty:</strong> ${wainwright.difficulty || 'N/A'}</p>
-                    <p><strong>Scramble:</strong> ${wainwright.scramble || 'N/A'}</p>
-                    <p><strong>Dog Friendly:</strong> ${wainwright.dogFriendly || 'N/A'}</p>
-                    <p><strong>Weather:</strong> ${wainwright.weather || 'Loading...'}</p>
-                    <p><strong>Sunset Probability:</strong> ${wainwright.sunsetProbability || 0}%</p>
-                    <p><strong>Height:</strong> ${wainwright.height || 'N/A'}</p>
-                    <p><strong>Hike Length:</strong> ${wainwright.hikeLength ? wainwright.hikeLength + ' miles' : 'N/A'}</p>
-                    <p><strong>Estimated Time:</strong> ${wainwright.time ? wainwright.time + ' hours' : 'N/A'}</p>
-                    <p><strong>GPX Route:</strong> ${wainwright.gpxLink ? '<a href="' + wainwright.gpxLink + '" target="_blank">Download</a>' : 'N/A'}</p>
-                    <p><strong>OS Map:</strong> ${wainwright.osMapLink ? '<a href="' + wainwright.osMapLink + '" target="_blank">View</a>' : 'N/A'}</p>
-                    <p><strong>Mountain Forecast:</strong> ${wainwright.mountainForecast ? '<a href="' + wainwright.mountainForecast + '" target="_blank">Check</a>' : 'N/A'}</p>
-                    <p><strong>Car Park:</strong> ${wainwright.carpark ? wainwright.carpark + ' (' + wainwright.postcode + ')' : 'N/A'}</p>
-                    <p><strong>What3Words:</strong> ${wainwright.what3words || 'N/A'}</p>
-                    <p><strong>Fun Fact:</strong> ${wainwright.funFacts || 'N/A'}</p>
-                    <p><strong>Additional Info:</strong> ${wainwright.additionalInfo || 'N/A'}</p>
-                    <p><strong>Instagram Reel:</strong> ${wainwright.instagramReel ? '<a href="' + wainwright.instagramReel + '" target="_blank">Watch</a>' : 'N/A'}</p>
-                </div>
-            `;
-        }
-
-        // Tracker Tab
-        const map = L.map("map").setView([54.5, -3.2], 10);
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution: "© OpenStreetMap contributors"
-        }).addTo(map);
-
-        const markers = {};
-
-        function loadProgress() {
-            console.log("Loading progress...");
-            const saved = localStorage.getItem("wainwrightProgress");
-            if (saved) {
-                try {
-                    const progress = JSON.parse(saved);
-                    allWainwrights.forEach((w, i) => w.completed = progress[i].completed);
-                    console.log("Progress loaded successfully");
-                } catch (error) {
-                    console.error("Error loading progress:", error);
-                }
-            }
-        }
-
-        function saveProgress() {
-            console.log("Saving progress...");
-            localStorage.setItem("wainwrightProgress", JSON.stringify(allWainwrights));
-        }
-
-        function updateProgressBar() {
-            const total = allWainwrights.length;
-            const completedCount = allWainwrights.filter(w => w.completed).length;
-            const completedPercentage = (completedCount / total) * 100;
-            document.getElementById("completed").style.width = `${completedPercentage}%`;
-            document.getElementById("progress-text").textContent = `${completedCount}/${total} - ${completedPercentage.toFixed(1)}%`;
-        }
-
-        function updateTrackerDisplay() {
-            console.log("Starting updateTrackerDisplay, Wainwrights count:", allWainwrights.length);
-            const list = document.getElementById("wainwright-list");
-            if (!list) {
-                console.error("List element not found!");
-                return;
-            }
-            list.innerHTML = "";
-
-            allWainwrights.forEach((wainwright, index) => {
-                console.log(`Processing ${index + 1}/${allWainwrights.length}: ${wainwright.name}`);
-                try {
-                    const li = document.createElement("li");
-                    const checkbox = document.createElement("input");
-                    checkbox.type = "checkbox";
-                    checkbox.checked = wainwright.completed;
-                    checkbox.addEventListener("change", () => {
-                        wainwright.completed = checkbox.checked;
-                        updateMarker(wainwright);
-                        saveProgress();
-                        updateProgressBar();
-                    });
-                    li.appendChild(checkbox);
-                    const nameLink = document.createElement("a");
-                    nameLink.textContent = ` ${wainwright.name}`;
-                    nameLink.href = "#";
-                    nameLink.onclick = () => { showInfo(wainwright); openTab('info'); return false; };
-                    li.appendChild(nameLink);
-                    if (wainwright.completed) li.classList.add("completed");
-                    list.appendChild(li);
-
-                    if (markers[wainwright.name]) map.removeLayer(markers[wainwright.name]);
-                    markers[wainwright.name] = L.circleMarker([wainwright.lat, wainwright.lon], {
-                        radius: 5,
-                        color: wainwright.completed ? "green" : "red",
-                        fillOpacity: 0.8
-                    }).addTo(map).bindPopup(wainwright.name).on('click', () => { showInfo(wainwright); openTab('info'); });
-                } catch (error) {
-                    console.error(`Error processing ${wainwright.name}:`, error);
-                }
-            });
-            updateProgressBar();
-            console.log("updateTrackerDisplay completed");
-        }
-
-        function updateMarker(wainwright) {
-            if (markers[wainwright.name]) {
-                markers[wainwright.name].setStyle({
-                    color: wainwright.completed ? "green" : "red"
-                });
-            }
-        }
-
-        // Tab Switching
-        function openTab(tabName) {
-            const tabs = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
-            const buttons = document.getElementsByClassName("tab-button");
-            for (let i = 0; i < buttons.length; i++) buttons[i].classList.remove("active");
-            document.getElementById(tabName).classList.add("active");
-            document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add("active");
-            if (tabName === 'tracker') map.invalidateSize(); // Fix map sizing
-        }
-
-        // Initialization
-        async function init() {
-            loadProgress();
-            displayTopWainwrights();
-            updateTrackerDisplay();
-            await updateWeather();
-            displayTopWainwrights();
-            updateTrackerDisplay();
-        }
-
-        init();
-    </script>
-</body>
-</html>
+            {name:"Langdale Pikes",region:"Central Fells",difficulty:"Moderate",scramble:"Yes",dogFriendly:"Yes",weather:"",height:"736m",hikeLength:6,lat:54.456,lon:-3.097,gpxLin
