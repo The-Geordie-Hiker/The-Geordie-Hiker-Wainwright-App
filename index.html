@@ -201,14 +201,9 @@
                 const data = await response.json();
                 const weatherCode = data.current_weather.weathercode;
                 const cloudCover = data.hourly.cloudcover[0];
-
-                const weatherMap = {
-                    0: "Clear", 1: "Sunny", 2: "Partly Cloudy", 3: "Cloudy",
-                    45: "Foggy", 51: "Rainy", 61: "Rainy", 71: "Snowy", 95: "Stormy"
-                };
+                const weatherMap = { 0: "Clear", 1: "Sunny", 2: "Partly Cloudy", 3: "Cloudy", 45: "Foggy", 51: "Rainy", 61: "Rainy", 71: "Snowy", 95: "Stormy" };
                 const weather = weatherMap[weatherCode] || "Unknown";
                 const sunsetProbability = Math.round(Math.min(Math.max((cloudCover - 30) / 40, 0), 1) * 100);
-
                 return { weather, sunsetProbability };
             } catch (error) {
                 console.error(`Error fetching weather for lat:${lat}, lon:${lon}:`, error);
@@ -217,58 +212,40 @@
         }
 
         async function updateWeather() {
-            console.log("Updating weather...");
             const weatherPromises = allWainwrights.map(async (wainwright) => {
                 const result = await fetchWeather(wainwright.lat, wainwright.lon);
                 wainwright.weather = result.weather;
                 wainwright.sunsetProbability = result.sunsetProbability;
             });
             await Promise.all(weatherPromises);
-            console.log("Weather updated.");
         }
 
         function displayTopWainwrights() {
-            console.log("Displaying top wainwrights...");
             const topWainwrightsDiv = document.getElementById("top-wainwrights");
             topWainwrightsDiv.innerHTML = "";
-            const buttons = topWainwrights.map(wainwright => {
+            topWainwrights.forEach(wainwright => {
                 const button = document.createElement("button");
                 button.className = "button";
                 button.textContent = `${wainwright.name} (${wainwright.weather || 'Loading...'}, ${wainwright.sunsetProbability || 0}%)`;
                 button.onclick = () => { showInfo(wainwright); openTab('info'); };
-                return button;
+                topWainwrightsDiv.appendChild(button);
             });
-            topWainwrightsDiv.append(...buttons);
-            console.log("Top wainwrights displayed.");
         }
 
         function displayWainwrights(filtered = allWainwrights) {
-            console.log("Displaying wainwrights...");
             const wainwrightListDiv = document.getElementById("wainwright-list");
-            if (!wainwrightListDiv) {
-                console.error("wainwright-list element not found!");
-                return;
-            }
+            if (!wainwrightListDiv) return;
             wainwrightListDiv.innerHTML = "";
-            const chunkSize = 20; // Render in chunks to avoid freezing
-            for (let i = 0; i < filtered.length; i += chunkSize) {
-                setTimeout(() => {
-                    const chunk = filtered.slice(i, i + chunkSize);
-                    const buttons = chunk.map(wainwright => {
-                        const button = document.createElement("button");
-                        button.className = "button";
-                        button.textContent = `${wainwright.name} (${wainwright.weather || 'Loading...'}, ${wainwright.sunsetProbability || 0}%)`;
-                        button.onclick = () => showInfo(wainwright);
-                        return button;
-                    });
-                    wainwrightListDiv.append(...buttons);
-                }, i * 50); // Stagger rendering
-            }
-            console.log("Wainwrights displayed.");
+            filtered.forEach(wainwright => {
+                const button = document.createElement("button");
+                button.className = "button";
+                button.textContent = `${wainwright.name} (${wainwright.weather || 'Loading...'}, ${wainwright.sunsetProbability || 0}%)`;
+                button.onclick = () => showInfo(wainwright);
+                wainwrightListDiv.appendChild(button);
+            });
         }
 
         function applyFilters() {
-            console.log("Applying filters...");
             const region = document.getElementById("region-filter").value;
             const difficulty = document.getElementById("difficulty-filter").value;
             const scramble = document.getElementById("scramble-filter").value;
@@ -288,16 +265,11 @@
                 });
             }
             displayWainwrights(filtered);
-            console.log("Filters applied.");
         }
 
         function showInfo(wainwright) {
-            console.log(`Showing info for ${wainwright.name}...`);
             const infoDiv = document.getElementById("info-container");
-            if (!infoDiv) {
-                console.error("info-container element not found!");
-                return;
-            }
+            if (!infoDiv) return;
             infoDiv.innerHTML = `
                 <div class="wainwright-info">
                     <h3>${wainwright.name}</h3>
@@ -320,7 +292,6 @@
                     <p><strong>Instagram Reel:</strong> ${wainwright.instagramReel ? `<a href="${wainwright.instagramReel}" target="_blank">Watch</a>` : 'N/A'}</p>
                 </div>
             `;
-            console.log(`Info shown for ${wainwright.name}.`);
         }
 
         const map = L.map("map").setView([54.5, -3.2], 10);
@@ -331,13 +302,11 @@
         const markers = {};
 
         function loadProgress() {
-            console.log("Loading progress...");
             const saved = localStorage.getItem("wainwrightProgress");
             if (saved) {
                 try {
                     const progress = JSON.parse(saved);
                     allWainwrights.forEach((w, i) => w.completed = progress[i]?.completed || false);
-                    console.log("Progress loaded successfully");
                 } catch (error) {
                     console.error("Error loading progress:", error);
                 }
@@ -345,12 +314,10 @@
         }
 
         function saveProgress() {
-            console.log("Saving progress...");
             localStorage.setItem("wainwrightProgress", JSON.stringify(allWainwrights));
         }
 
         function updateProgressBar() {
-            console.log("Updating progress bar...");
             const total = allWainwrights.length;
             const completedCount = allWainwrights.filter(w => w.completed).length;
             const completedPercentage = (completedCount / total) * 100;
@@ -359,52 +326,37 @@
         }
 
         function updateTrackerDisplay() {
-            console.log("Updating tracker display...");
             const list = document.getElementById("wainwright-list-tracker");
-            if (!list) {
-                console.error("Tracker list element not found!");
-                return;
-            }
+            if (!list) return;
             list.innerHTML = "";
-            const chunkSize = 20; // Render in chunks
-            for (let i = 0; i < allWainwrights.length; i += chunkSize) {
-                setTimeout(() => {
-                    const chunk = allWainwrights.slice(i, i + chunkSize);
-                    chunk.forEach(wainwright => {
-                        try {
-                            const li = document.createElement("li");
-                            const checkbox = document.createElement("input");
-                            checkbox.type = "checkbox";
-                            checkbox.checked = wainwright.completed;
-                            checkbox.addEventListener("change", () => {
-                                wainwright.completed = checkbox.checked;
-                                updateMarker(wainwright);
-                                saveProgress();
-                                updateProgressBar();
-                            });
-                            li.appendChild(checkbox);
-                            const nameLink = document.createElement("a");
-                            nameLink.textContent = ` ${wainwright.name}`;
-                            nameLink.href = "#";
-                            nameLink.onclick = () => { showInfo(wainwright); openTab('info'); return false; };
-                            li.appendChild(nameLink);
-                            if (wainwright.completed) li.classList.add("completed");
-                            list.appendChild(li);
+            allWainwrights.forEach(wainwright => {
+                const li = document.createElement("li");
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = wainwright.completed;
+                checkbox.addEventListener("change", () => {
+                    wainwright.completed = checkbox.checked;
+                    updateMarker(wainwright);
+                    saveProgress();
+                    updateProgressBar();
+                });
+                li.appendChild(checkbox);
+                const nameLink = document.createElement("a");
+                nameLink.textContent = ` ${wainwright.name}`;
+                nameLink.href = "#";
+                nameLink.onclick = () => { showInfo(wainwright); openTab('info'); return false; };
+                li.appendChild(nameLink);
+                if (wainwright.completed) li.classList.add("completed");
+                list.appendChild(li);
 
-                            if (markers[wainwright.name]) map.removeLayer(markers[wainwright.name]);
-                            markers[wainwright.name] = L.circleMarker([wainwright.lat, wainwright.lon], {
-                                radius: 5,
-                                color: wainwright.completed ? "green" : "red",
-                                fillOpacity: 0.8
-                            }).addTo(map).bindPopup(wainwright.name).on('click', () => { showInfo(wainwright); openTab('info'); });
-                        } catch (error) {
-                            console.error(`Error processing ${wainwright.name}:`, error);
-                        }
-                    });
-                }, i * 50); // Stagger rendering
-            }
+                if (markers[wainwright.name]) map.removeLayer(markers[wainwright.name]);
+                markers[wainwright.name] = L.circleMarker([wainwright.lat, wainwright.lon], {
+                    radius: 5,
+                    color: wainwright.completed ? "green" : "red",
+                    fillOpacity: 0.8
+                }).addTo(map).bindPopup(wainwright.name).on('click', () => { showInfo(wainwright); openTab('info'); });
+            });
             updateProgressBar();
-            console.log("Tracker display updated.");
         }
 
         function updateMarker(wainwright) {
@@ -416,7 +368,6 @@
         }
 
         function openTab(tabName) {
-            console.log(`Opening tab: ${tabName}...`);
             const tabs = document.getElementsByClassName("tab-content");
             for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
             const buttons = document.getElementsByClassName("tab-button");
@@ -424,21 +375,19 @@
             document.getElementById(tabName).classList.add("active");
             document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add("active");
             if (tabName === 'tracker') {
-                setTimeout(() => map.invalidateSize(), 100); // Delay map resize
+                setTimeout(() => map.invalidateSize(), 100);
                 updateTrackerDisplay();
             }
             if (tabName === 'info') displayWainwrights();
             if (tabName === 'top10') displayTopWainwrights();
-            console.log(`Tab ${tabName} opened.`);
         }
 
         async function init() {
-            console.log("Initializing...");
             loadProgress();
-            displayTopWainwrights(); // Load top 10 initially
+            displayTopWainwrights();
             await updateWeather();
-            displayTopWainwrights(); // Refresh with weather
-            console.log("Initialization complete.");
+            displayTopWainwrights();
+            displayWainwrights();
         }
 
         init();
