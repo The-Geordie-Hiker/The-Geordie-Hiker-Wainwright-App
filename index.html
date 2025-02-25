@@ -8,6 +8,8 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; margin: 0; }
         h1, h2 { color: #333; }
+        .filters { margin: 20px 0; }
+        .filters select { padding: 8px; margin: 5px 10px 5px 0; border-radius: 5px; font-size: 14px; }
         .button-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
         .button { padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; flex: 1 1 calc(20% - 10px); text-align: center; }
         .button:hover { background-color: #0056b3; }
@@ -29,8 +31,8 @@
         #tracker #container { display: flex; gap: 20px; max-width: 1200px; margin: 0 auto; }
         #tracker #map { height: 500px; width: 70%; border: 1px solid #ccc; }
         #tracker #list { width: 30%; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow-y: auto; max-height: 500px; }
-        #tracker #wainwright-list { list-style: none; padding: 0; }
-        #tracker #wainwright-list li { padding: 5px 0; }
+        #tracker #wainwright-list-tracker { list-style: none; padding: 0; }
+        #tracker #wainwright-list-tracker li { padding: 5px 0; }
         #tracker .completed { color: green; font-weight: bold; }
     </style>
 </head>
@@ -49,6 +51,42 @@
 
     <div id="info" class="tab-content">
         <h2>Wainwright Info</h2>
+        <div class="filters">
+            <select id="region-filter">
+                <option value="">Select Region</option>
+                <option value="Northern Fells">Northern Fells</option>
+                <option value="Central Fells">Central Fells</option>
+                <option value="Southern Fells">Southern Fells</option>
+                <option value="Western Fells">Western Fells</option>
+                <option value="Eastern Fells">Eastern Fells</option>
+                <option value="Far Eastern Fells">Far Eastern Fells</option>
+                <option value="North Western Fells">North Western Fells</option>
+            </select>
+            <select id="difficulty-filter">
+                <option value="">Select Difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Hard">Hard</option>
+            </select>
+            <select id="scramble-filter">
+                <option value="">Scramble Involved?</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <select id="dog-filter">
+                <option value="">Dog Friendly?</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <select id="length-filter">
+                <option value="">Select Hike Length</option>
+                <option value="Short">Short (0-4 miles)</option>
+                <option value="Medium">Medium (4-7 miles)</option>
+                <option value="Long">Long (7+ miles)</option>
+            </select>
+            <button class="button" onclick="applyFilters()">Apply Filters</button>
+        </div>
+        <div id="wainwright-list" class="button-container"></div>
         <div id="info-container"></div>
     </div>
 
@@ -64,7 +102,7 @@
             <div id="map"></div>
             <div id="list">
                 <h2>Wainwrights</h2>
-                <ul id="wainwright-list"></ul>
+                <ul id="wainwright-list-tracker"></ul>
             </div>
         </div>
     </div>
@@ -72,12 +110,12 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         const allWainwrights = [
-            { name: "Allen Crags", lat: 54.467, lon: -3.200, completed: false, height: "785m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 3.0, weather: "" },
-            { name: "Angletarn Pikes", lat: 54.527, lon: -2.907, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "" },
-            { name: "Ard Crags", lat: 54.618, lon: -3.262, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "" },
-            // Add all 214 Wainwrights here (abbreviated for now)
-            { name: "Haystacks", lat: 54.508, lon: -3.248, completed: false, height: "597m", hikeLength: 5, gpxLink: "https://www.walklakes.co.uk/gpx/Haystacks.gpx", osMapLink: "https://osmaps.ordnancesurvey.co.uk/54.507,-3.247", mountainForecast: "https://www.mountain-forecast.com/peaks/Haystacks/forecasts/597", carpark: "Gatesgarth Car Park", postcode: "CA13 9XA", what3words: "///tarns.water.peace", funFacts: "Haystacks was Wainwright's favorite fell, with stunning tarns.", additionalInfo: "Features beautiful tarns and a rugged summit, offering a moderate hike with scrambling sections and breathtaking views over Buttermere.", instagramReel: "https://www.instagram.com/reel/haystacks", time: 2.5, weather: "" },
-            { name: "Yoke", lat: 54.456, lon: -2.861, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "" }
+            { name: "Allen Crags", lat: 54.467, lon: -3.200, completed: false, height: "785m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 3.0, weather: "", region: "", difficulty: "", scramble: "", dogFriendly: "" },
+            { name: "Angletarn Pikes", lat: 54.527, lon: -2.907, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "", region: "", difficulty: "", scramble: "", dogFriendly: "" },
+            { name: "Ard Crags", lat: 54.618, lon: -3.262, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "", region: "", difficulty: "", scramble: "", dogFriendly: "" },
+            // Full list abbreviated - should include all 214
+            { name: "Haystacks", lat: 54.508, lon: -3.248, completed: false, height: "597m", hikeLength: 5, region: "Western Fells", difficulty: "Moderate", scramble: "Yes", dogFriendly: "Yes", gpxLink: "https://www.walklakes.co.uk/gpx/Haystacks.gpx", osMapLink: "https://osmaps.ordnancesurvey.co.uk/54.507,-3.247", mountainForecast: "https://www.mountain-forecast.com/peaks/Haystacks/forecasts/597", carpark: "Gatesgarth Car Park", postcode: "CA13 9XA", what3words: "///tarns.water.peace", funFacts: "Haystacks was Wainwright's favorite fell, with stunning tarns.", additionalInfo: "Features beautiful tarns and a rugged summit.", instagramReel: "https://www.instagram.com/reel/haystacks", time: 2.5, weather: "" },
+            { name: "Yoke", lat: 54.456, lon: -2.861, completed: false, height: "", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "", region: "", difficulty: "", scramble: "", dogFriendly: "" }
         ];
 
         const topWainwrights = [
@@ -142,6 +180,41 @@
             topWainwrightsDiv.append(...buttons);
         }
 
+        function displayWainwrights(filtered = allWainwrights) {
+            const wainwrightListDiv = document.getElementById("wainwright-list");
+            wainwrightListDiv.innerHTML = "";
+            const buttons = filtered.map(wainwright => {
+                const button = document.createElement("button");
+                button.className = "button";
+                button.textContent = `${wainwright.name} (${wainwright.weather || 'Loading...'}, ${wainwright.sunsetProbability || 0}%)`;
+                button.onclick = () => showInfo(wainwright);
+                return button;
+            });
+            wainwrightListDiv.append(...buttons);
+        }
+
+        function applyFilters() {
+            const region = document.getElementById("region-filter").value;
+            const difficulty = document.getElementById("difficulty-filter").value;
+            const scramble = document.getElementById("scramble-filter").value;
+            const dogFriendly = document.getElementById("dog-filter").value;
+            const length = document.getElementById("length-filter").value;
+            let filtered = [...allWainwrights];
+            if (region) filtered = filtered.filter(w => w.region === region);
+            if (difficulty) filtered = filtered.filter(w => w.difficulty === difficulty);
+            if (scramble) filtered = filtered.filter(w => w.scramble === scramble);
+            if (dogFriendly) filtered = filtered.filter(w => w.dogFriendly === dogFriendly);
+            if (length) {
+                filtered = filtered.filter(w => {
+                    if (length === "Short") return w.hikeLength <= 4;
+                    if (length === "Medium") return w.hikeLength > 4 && w.hikeLength <= 7;
+                    if (length === "Long") return w.hikeLength > 7;
+                    return true;
+                });
+            }
+            displayWainwrights(filtered);
+        }
+
         function showInfo(wainwright) {
             const infoDiv = document.getElementById("info-container");
             infoDiv.innerHTML = `
@@ -204,9 +277,9 @@
 
         function updateTrackerDisplay() {
             console.log("Starting updateTrackerDisplay, Wainwrights count:", allWainwrights.length);
-            const list = document.getElementById("wainwright-list");
+            const list = document.getElementById("wainwright-list-tracker");
             if (!list) {
-                console.error("List element not found!");
+                console.error("Tracker list element not found!");
                 return;
             }
             list.innerHTML = "";
@@ -268,9 +341,11 @@
         async function init() {
             loadProgress();
             displayTopWainwrights();
+            displayWainwrights();
             updateTrackerDisplay();
             await updateWeather();
             displayTopWainwrights();
+            displayWainwrights();
             updateTrackerDisplay();
         }
 
