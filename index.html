@@ -27,9 +27,14 @@
         background-image: url('https://raw.githubusercontent.com/The-Geordie-Hiker/The-Geordie-Hiker-Wainwright-App/main/dji_fly_20240830_180210_0226_1725123490435_photo%202.JPG');
         background-size: cover;
         background-position: center;
-        padding: 20px;
+        height: 100vh; /* Full viewport height */
+        width: 100vw; /* Full viewport width */
+        margin: 0; /* Remove white border */
+        padding: 20px; /* Keep padding for content spacing */
         color: white;
         text-shadow: 1px 1px 2px black;
+        position: relative; /* Ensure content stays within */
+        left: -20px; /* Offset body padding */
     }
     #top10 h2 {
         color: white;
