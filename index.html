@@ -13,23 +13,25 @@
             padding: 0; 
             min-height: 100vh;
         }
-        .top-section {
-            background-color: #36363a;
-            padding: 10px 20px;
-            text-align: center;
-        }
-        h1 { 
-            color: #000000; 
-            text-align: center; 
-            margin: 10px 0; 
-        }
-        .header-subtitle { 
-            color: #000000; 
-            font-size: 14px; 
-            text-align: center; 
-            display: block; 
-            margin: 5px 0; 
-        }
+       .top-section {
+    background-color: #000000; /* Black background */
+    padding: 10px 0; /* Remove horizontal padding, keep vertical */
+    text-align: center;
+    width: 100%; /* Full width */
+    margin: 0; /* Remove any default margin */
+}
+h1 { 
+    color: #ffffff; /* White text */
+    text-align: center; 
+    margin: 10px 0; 
+}
+.header-subtitle { 
+    color: #ffffff; /* White text */
+    font-size: 14px; 
+    text-align: center; 
+    display: block; 
+    margin: 5px 0; 
+}
         .filters { 
             margin: 20px 0; 
             display: flex; 
@@ -259,6 +261,19 @@
             color: green; 
             font-weight: bold; 
         }
+        #apply-filters {
+    padding: 8px 16px;
+    background-color: #36363a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+#apply-filters:hover {
+    background-color: #e0e0e0;
+    color: #000000;
+}
     </style>
 </head>
 <body>
@@ -279,50 +294,56 @@
 
     <div id="info" class="tab-content">
         <h2>Wainwright Info</h2>
-        <div class="filters">
-            <select id="region-filter">
-                <option value="">Select Region</option>
-                <option value="Northern Fells">Northern Fells</option>
-                <option value="Central Fells">Central Fells</option>
-                <option value="Southern Fells">Southern Fells</option>
-                <option value="Western Fells">Western Fells</option>
-                <option value="Eastern Fells">Eastern Fells</option>
-                <option value="Far Eastern Fells">Far Eastern Fells</option>
-                <option value="North Western Fells">North Western Fells</option>
-            </select>
-            <select id="difficulty-filter">
-                <option value="">Select Difficulty</option>
-                <option value="Easy">Easy</option>
-                <option value="Moderate">Moderate</option>
-                <option value="Hard">Hard</option>
-            </select>
-            <select id="scramble-filter">
-                <option value="">Scramble Involved?</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-            <select id="dog-filter">
-                <option value="">Dog Friendly?</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-            <select id="length-filter">
-                <option value="">Select Hike Length</option>
-                <option value="Short">Short (0-4 miles)</option>
-                <option value="Medium">Medium (4-7 miles)</option>
-                <option value="Long">Long (7+ miles)</option>
-            </select>
-            <select id="weather-filter">
-                <option value="">Select Weather</option>
-                <option value="☀️">Clear/Sunny</option>
-                <option value="⛅">Partly Cloudy</option>
-                <option value="☁️">Cloudy</option>
-                <option value="🌫️">Foggy</option>
-                <option value="🌧️">Rainy</option>
-                <option value="❄️">Snowy</option>
-                <option value="⛈️">Stormy</option>
-            </select>
-        </div>
+        <div id="info" class="tab-content">
+    <h2>Wainwright Info</h2>
+    <div class="filters">
+        <select id="region-filter">
+            <option value="">Select Region</option>
+            <option value="Northern Fells">Northern Fells</option>
+            <option value="Central Fells">Central Fells</option>
+            <option value="Southern Fells">Southern Fells</option>
+            <option value="Western Fells">Western Fells</option>
+            <option value="Eastern Fells">Eastern Fells</option>
+            <option value="Far Eastern Fells">Far Eastern Fells</option>
+            <option value="North Western Fells">North Western Fells</option>
+        </select>
+        <select id="difficulty-filter">
+            <option value="">Select Difficulty</option>
+            <option value="Easy">Easy</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Hard">Hard</option>
+        </select>
+        <select id="scramble-filter">
+            <option value="">Scramble Involved?</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <select id="dog-filter">
+            <option value="">Dog Friendly?</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <select id="length-filter">
+            <option value="">Select Hike Length</option>
+            <option value="Short">Short (0-4 miles)</option>
+            <option value="Medium">Medium (4-7 miles)</option>
+            <option value="Long">Long (7+ miles)</option>
+        </select>
+        <select id="weather-filter">
+            <option value="">Select Weather</option>
+            <option value="☀️">Clear/Sunny</option>
+            <option value="⛅">Partly Cloudy</option>
+            <option value="☁️">Cloudy</option>
+            <option value="🌫️">Foggy</option>
+            <option value="🌧️">Rainy</option>
+            <option value="❄️">Snowy</option>
+            <option value="⛈️">Stormy</option>
+        </select>
+        <button id="apply-filters" onclick="applyFilters()">Apply</button>
+    </div>
+    <div id="wainwright-list" class="button-container"></div>
+    <div id="info-container"></div>
+</div>
         <div id="wainwright-list" class="button-container"></div>
         <div id="info-container"></div>
     </div>
