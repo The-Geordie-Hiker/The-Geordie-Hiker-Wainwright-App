@@ -343,10 +343,10 @@
             </div>
         </div>
     </div>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         let map; // Map declared globally, initialized later
+
         const allWainwrights = [
             { name: "Allen Crags", lat: 54.467, lon: -3.200, completed: false, height: "785m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Allen-Crags/forecasts/785", carpark: "Seathwaite", postcode: "CA12 5XJ", what3words: "///example", funFacts: "Offers views of Scafell Pike.", additionalInfo: "A quieter fell near Great Gable.", instagramReel: "", time: 3.0, weather: "", region: "Southern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "https://raw.githubusercontent.com/The-Geordie-Hiker/The-Geordie-Hiker-Wainwright-App/main/dji_fly_20240830_180210_0226_1725123490435_photo%202.JPG" },
             { name: "Angletarn Pikes", lat: 54.527, lon: -2.907, completed: false, height: "567m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Angletarn-Pikes/forecasts/567", carpark: "Hartsop", postcode: "CA11 0NZ", what3words: "///example", funFacts: "Named after nearby Angle Tarn.", additionalInfo: "A scenic walk with two summits.", instagramReel: "", time: 2.0, weather: "", region: "Far Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
@@ -363,11 +363,8 @@
             { name: "Binsey", lat: 54.709, lon: -3.263, completed: false, height: "447m", hikeLength: 2, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Binsey/forecasts/447", carpark: "Binsey Cottage", postcode: "CA7 0NE", what3words: "", funFacts: "Northernmost Wainwright.", additionalInfo: "Short, easy walk with wide views.", instagramReel: "", time: 1.0, weather: "", region: "Northern Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
             { name: "Birkhouse Moor", lat: 54.536, lon: -3.008, completed: false, height: "718m", hikeLength: 5, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Birkhouse-Moor/forecasts/718", carpark: "Glenridding", postcode: "CA11 0PA", what3words: "", funFacts: "En route to Helvellyn.", additionalInfo: "Offers views of Striding Edge.", instagramReel: "", time: 2.5, weather: "", region: "Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
             { name: "Birks", lat: 54.571, lon: -2.962, completed: false, height: "622m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Birks/forecasts/622", carpark: "Patterdale", postcode: "CA11 0NZ", what3words: "", funFacts: "Near St Sunday Crag.", additionalInfo: "Moderate climb with valley views.", instagramReel: "", time: 1.5, weather: "", region: "Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-{ name: "Birks", lat: 54.571, lon: -2.962, completed: false, height: "622m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Birks/forecasts/622", carpark: "Patterdale", postcode: "CA11 0NZ", what3words: "", funFacts: "Near St Sunday Crag.", additionalInfo: "Moderate climb with valley views.", instagramReel: "", time: 1.5, weather: "", region: "Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
             { name: "Black Fell", lat: 54.405, lon: -3.008, completed: false, height: "323m", hikeLength: 2, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Black-Fell/forecasts/323", carpark: "Tarn Hows", postcode: "LA22 0PP", what3words: "", funFacts: "Overlooks Tarn Hows.", additionalInfo: "Gentle walk with lake views.", instagramReel: "", time: 1.0, weather: "", region: "Southern Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Blencathra", lat: 54.640, lon: -3.050, completed: false, height: "868m", hikeLength: 7.5, gpxLink: "https://www.walklakes.co.uk/gpx/Blencathra.gpx", osMapLink: "https://osmaps.ordnancesurvey.co.uk/54.640,-3.050", mountainForecast: "https://www.mountain-forecast.com/peaks/Blencathra/forecasts/868", carpark: "Scales Fell Car Park", postcode: "CA12 4TL", what3words: "///sharp.steep.path", funFacts: "Known for rugged ridges.", additionalInfo: "Features Sharp Edge scramble.", instagramReel: {<|seperator|>
-
-"https://www.instagram.com/reel/blencathra", time: 4.5, weather: "", region: "Northern Fells", difficulty: "Hard", scramble: "Yes", dogFriendly: "No", photo: "images/placeholder.jpg" },
+            { name: "Blencathra", lat: 54.640, lon: -3.050, completed: false, height: "868m", hikeLength: 7.5, gpxLink: "https://www.walklakes.co.uk/gpx/Blencathra.gpx", osMapLink: "https://osmaps.ordnancesurvey.co.uk/54.640,-3.050", mountainForecast: "https://www.mountain-forecast.com/peaks/Blencathra/forecasts/868", carpark: "Scales Fell Car Park", postcode: "CA12 4TL", what3words: "///sharp.steep.path", funFacts: "Known for rugged ridges.", additionalInfo: "Features Sharp Edge scramble.", instagramReel: "https://www.instagram.com/reel/blencathra", time: 4.5, weather: "", region: "Northern Fells", difficulty: "Hard", scramble: "Yes", dogFriendly: "No", photo: "images/placeholder.jpg" },
             { name: "Blea Rigg", lat: 54.462, lon: -3.050, completed: false, height: "541m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Blea-Rigg/forecasts/541", carpark: "Grasmere", postcode: "LA22 9JX", what3words: "", funFacts: "Part of the Langdale skyline.", additionalInfo: "Gentle ridge with tarns.", instagramReel: "", time: 2.0, weather: "", region: "Central Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
             { name: "Bleaberry Fell", lat: 54.570, lon: -3.105, completed: false, height: "590m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Bleaberry-Fell/forecasts/590", carpark: "Keswick", postcode: "CA12 4PZ", what3words: "", funFacts: "Named for its blueberries.", additionalInfo: "Moderate climb near Castlerigg.", instagramReel: "", time: 2.0, weather: "", region: "Central Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
             { name: "Bonscale Pike", lat: 54.616, lon: -2.843, completed: false, height: "524m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Bonscale-Pike/forecasts/524", carpark: "Pooley Bridge", postcode: "CA10 2NL", what3words: "", funFacts: "Overlooks Ullswater.", additionalInfo: "Quiet fell with gentle slopes.", instagramReel: "", time: 1.5, weather: "", region: "Far Eastern Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
@@ -382,72 +379,26 @@
             { name: "Buckbarrow", lat: 54.393, lon: -3.314, completed: false, height: "423m", hikeLength: 2, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Buckbarrow/forecasts/423", carpark: "Nether Wasdale", postcode: "CA20 1EX", what3words: "", funFacts: "Overlooks Wastwater.", additionalInfo: "Short climb with dramatic views.", instagramReel: "", time: 1.0, weather: "", region: "Western Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
             { name: "Burnbank Fell", lat: 54.664, lon: -3.305, completed: false, height: "475m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Burnbank-Fell/forecasts/475", carpark: "Loweswater", postcode: "CA13 0RU", what3words: "", funFacts: "Borders Loweswater.", additionalInfo: "Gentle fell with lake views.", instagramReel: "", time: 1.5, weather: "", region: "Western Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
             { name: "Calf Crag", lat: 54.477, lon: -3.077, completed: false, height: "537m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Calf-Crag/forecasts/537", carpark: "Grasmere", postcode: "LA22 9JX", what3words: "", funFacts: "Part of the Langdale ridge.", additionalInfo: "Moderate walk with tarns.", instagramReel: "", time: 2.0, weather: "", region: "Central Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Carrock Fell", lat: 54.693, lon: -3.019, completed: false, height: "663m", hikeLength: 5, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Carrock-Fell/forecasts/663", carpark: "Stone Ends", postcode: "CA7 8LX", what3words: "", funFacts: "Ancient hill fort on summit.", additionalInfo: "Rugged with northern views.", instagramReel: "", time: 2.5, weather: "", region: "Northern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Castle Crag", lat: 54.531, lon: -3.162, completed: false, height: "290m", hikeLength: 2, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Castle-Crag/forecasts/290", carpark: "Rosthwaite", postcode: "CA12 5XB", what3words: "", funFacts: "Smallest Wainwright with a quarry.", additionalInfo: "Short walk with war memorial.", instagramReel: "", time: 1.0, weather: "", region: "North Western Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Catbells", lat: 54.568, lon: -3.170, completed: false, height: "451m", hikeLength: 3.5, gpxLink: "https://www.walklakes.co.uk/gpx/Catbells.gpx", osMapLink: "https://osmaps.ordnancesurvey.co.uk/54.568,-3.170", mountainForecast: "https://www.mountain-forecast.com/peaks/Catbells/forecasts/451", carpark: "Catbells Car Park", postcode: "CA12 5XP", what3words: "///easy.walk.summit", funFacts: "Perfect for beginners.", additionalInfo: "Great family hike with views.", instagramReel: "https://www.instagram.com/reel/catbells", time: 1.75, weather: "", region: "Central Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Catstye Cam", lat: 54.534, lon: -3.016, completed: false, height: "890m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Catstye-Cam/forecasts/890", carpark: "Glenridding", postcode: "CA11 0PA", what3words: "", funFacts: "Near Helvellyn’s summit.", additionalInfo: "Steep ascent with dramatic views.", instagramReel: "", time: 3.0, weather: "", region: "Eastern Fells", difficulty: "Hard", scramble: "Yes", dogFriendly: "No", photo: "images/placeholder.jpg" },
-            { name: "Causey Pike", lat: 54.579, lon: -3.251, completed: false, height: "637m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Causey-Pike/forecasts/637", carpark: "Stair", postcode: "CA12 5UF", what3words: "", funFacts: "Distinctive knobbly summit.", additionalInfo: "Moderate climb with Derwentwater views.", instagramReel: "", time: 2.0, weather: "", region: "North Western Fells", difficulty: "Moderate", scramble: "Yes", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Caw Fell", lat: 54.487, lon: -3.342, completed: false, height: "697m", hikeLength: 7, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Caw-Fell/forecasts/697", carpark: "Ennerdale", postcode: "CA23 3AU", what3words: "", funFacts: "Remote western fell.", additionalInfo: "Long walk with Ennerdale views.", instagramReel: "", time: 3.5, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Clough Head", lat: 54.593, lon: -3.033, completed: false, height: "726m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Clough-Head/forecasts/726", carpark: "Threlkeld", postcode: "CA12 4TS", what3words: "", funFacts: "Northern end of Helvellyn range.", additionalInfo: "Steep climb with expansive views.", instagramReel: "", time: 3.0, weather: "", region: "Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Cold Pike", lat: 54.413, lon: -3.154, completed: false, height: "701m", hikeLength: 5, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Cold-Pike/forecasts/701", carpark: "Old Dungeon Ghyll", postcode: "LA22 9JY", what3words: "", funFacts: "Near Crinkle Crags.", additionalInfo: "Moderate ascent with Langdale views.", instagramReel: "", time: 2.5, weather: "", region: "Southern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Coniston Old Man", lat: 54.370, lon: -3.118, completed: false, height: "803m", hikeLength: 6.5, gpxLink: "https://www.walklakes.co.uk/gpx/Coniston_Old_Man.gpx", osMapLink: "https://osmaps.ordnancesurvey.co.uk/54.370,-3.118", mountainForecast: "https://www.mountain-forecast.com/peaks/Coniston-Old-Man/forecasts/803", carpark: "Coniston Car Park", postcode: "LA21 8ED", what3words: "///old.man.hike", funFacts: "Classic fell with mining history.", additionalInfo: "Popular steady climb.", instagramReel: "https://www.instagram.com/reel/coniston_old_man", time: 3.25, weather: "", region: "Southern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Crag Fell", lat: 54.513, lon: -3.396, completed: false, height: "523m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Crag-Fell/forecasts/523", carpark: "Bowness Knott", postcode: "CA23 3AQ", what3words: "", funFacts: "Overlooks Ennerdale Water.", additionalInfo: "Gentle fell with lake views.", instagramReel: "", time: 2.0, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Crinkle Crags", lat: 54.433, lon: -3.158, completed: false, height: "859m", hikeLength: 7, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Crinkle-Crags/forecasts/859", carpark: "Old Dungeon Ghyll", postcode: "LA22 9JY", what3words: "", funFacts: "Famous for its five crinkles.", additionalInfo: "Rugged with great Langdale views.", instagramReel: "", time: 3.5, weather: "", region: "Southern Fells", difficulty: "Hard", scramble: "Yes", dogFriendly: "No", photo: "images/placeholder.jpg" },
-            { name: "Dale Head", lat: 54.527, lon: -3.202, completed: false, height: "753m", hikeLength: 5, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Dale-Head/forecasts/753", carpark: "Honister Pass", postcode: "CA12 5XN", what3words: "", funFacts: "Offers stunning Buttermere views.", additionalInfo: "Steep climb from Honister.", instagramReel: "", time: 2.5, weather: "", region: "North Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Deer Bield Crag", lat: 54.464, lon: -2.850, completed: false, height: "N/A", hikeLength: 0, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Deer-Bield-Crag/forecasts/500", carpark: "", postcode: "", what3words: "", funFacts: "", additionalInfo: "", instagramReel: "", time: 0, weather: "", region: "Far Eastern Fells", difficulty: "", scramble: "", dogFriendly: "", photo: "images/placeholder.jpg" },
-            { name: "Dodd", lat: 54.628, lon: -3.300, completed: false, height: "502m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Dodd/forecasts/502", carpark: "Mirehouse", postcode: "CA12 4QE", what3words: "", funFacts: "Forested with lake views.", additionalInfo: "Gentle walk near Bassenthwaite.", instagramReel: "", time: 1.5, weather: "", region: "Northern Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Dollywaggon Pike", lat: 54.507, lon: -3.008, completed: false, height: "858m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Dollywaggon-Pike/forecasts/858", carpark: "Dunmail Raise", postcode: "CA12 4PN", what3words: "", funFacts: "Part of Helvellyn range.", additionalInfo: "Steep with fine ridge walking.", instagramReel: "", time: 3.0, weather: "", region: "Eastern Fells", difficulty: "Hard", scramble: "No", dogFriendly: "No", photo: "images/placeholder.jpg" },
-            { name: "Dove Crag", lat: 54.490, lon: -2.951, completed: false, height: "792m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Dove-Crag/forecasts/792", carpark: "Ambleside", postcode: "LA22 9DS", what3words: "", funFacts: "Features a cave on its slopes.", additionalInfo: "Moderate with Fairfield views.", instagramReel: "", time: 3.0, weather: "", region: "Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Dow Crag", lat: 54.369, lon: -3.137, completed: false, height: "778m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Dow-Crag/forecasts/778", carpark: "Coniston", postcode: "LA21 8ED", what3words: "", funFacts: "Popular with rock climbers.", additionalInfo: "Steep with Coniston Water views.", instagramReel: "", time: 3.0, weather: "", region: "Southern Fells", difficulty: "Hard", scramble: "Yes", dogFriendly: "No", photo: "images/placeholder.jpg" },
-            { name: "Eagle Crag", lat: 54.496, lon: -3.090, completed: false, height: "525m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Eagle-Crag/forecasts/525", carpark: "Stonethwaite", postcode: "CA12 5XG", what3words: "", funFacts: "Craggy summit with views.", additionalInfo: "Moderate with Borrowdale scenery.", instagramReel: "", time: 2.0, weather: "", region: "Central Fells", difficulty: "Moderate", scramble: "Yes", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Fairfield", lat: 54.497, lon: -2.991, completed: false, height: "873m", hikeLength: 8, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Fairfield/forecasts/873", carpark: "Rydal", postcode: "LA22 9LW", what3words: "", funFacts: "Central to the eastern fells.", additionalInfo: "Long ascent with wide summit plateau.", instagramReel: "", time: 4.0, weather: "", region: "Eastern Fells", difficulty: "Hard", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Fellbarrow", lat: 54.664, lon: -3.342, completed: false, height: "416m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Fellbarrow/forecasts/416", carpark: "Loweswater", postcode: "CA13 0RU", what3words: "", funFacts: "Gentle western fell.", additionalInfo: "Easy walk with Loweswater views.", instagramReel: "", time: 1.5, weather: "", region: "Western Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Fleetwith Pike", lat: 54.516, lon: -3.233, completed: false, height: "648m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Fleetwith-Pike/forecasts/648", carpark: "Honister Pass", postcode: "CA12 5XN", what3words: "", funFacts: "Overlooks Buttermere.", additionalInfo: "Steep with stunning lake views.", instagramReel: "", time: 2.0, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Froswick", lat: 54.466, lon: -2.873, completed: false, height: "720m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Froswick/forecasts/720", carpark: "Kentmere", postcode: "LA8 9JL", what3words: "", funFacts: "Part of the Kentmere Horseshoe.", additionalInfo: "Moderate with ridge walking.", instagramReel: "", time: 3.0, weather: "", region: "Far Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Gavel Fell", lat: 54.548, lon: -3.369, completed: false, height: "526m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Gavel-Fell/forecasts/526", carpark: "Loweswater", postcode: "CA13 0RU", what3words: "", funFacts: "Near Loweswater village.", additionalInfo: "Gentle fell with western views.", instagramReel: "", time: 2.0, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Gibson Knott", lat: 54.478, lon: -3.047, completed: false, height: "420m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Gibson-Knott/forecasts/420", carpark: "Grasmere", postcode: "LA22 9JX", what3words: "", funFacts: "Small fell near Helm Crag.", additionalInfo: "Easy ridge walk with views.", instagramReel: "", time: 1.5, weather: "", region: "Central Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Glaramara", lat: 54.485, lon: -3.165, completed: false, height: "783m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Glaramara/forecasts/783", carpark: "Stonethwaite", postcode: "CA12 5XG", what3words: "", funFacts: "Rugged with multiple tops.", additionalInfo: "Moderate with Borrowdale views.", instagramReel: "", time: 3.0, weather: "", region: "Southern Fells", difficulty: "Moderate", scramble: "Yes", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Glenridding Dodd", lat: 54.566, lon: -2.993, completed: false, height: "442m", hikeLength: 2, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Glenridding-Dodd/forecasts/442", carpark: "Glenridding", postcode: "CA11 0PA", what3words: "", funFacts: "Overlooks Ullswater.", additionalInfo: "Short walk with lake views.", instagramReel: "", time: 1.0, weather: "", region: "Eastern Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Gowbarrow Fell", lat: 54.614, lon: -2.933, completed: false, height: "481m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Gowbarrow-Fell/forecasts/481", carpark: "Aira Force", postcode: "CA11 0JS", what3words: "", funFacts: "Home to Aira Force waterfall.", additionalInfo: "Gentle with scenic trails.", instagramReel: "", time: 1.5, weather: "", region: "Eastern Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Grange Fell", lat: 54.550, lon: -3.153, completed: false, height: "415m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Grange-Fell/forecasts/415", carpark: "Rosthwaite", postcode: "CA12 5XB", what3words: "", funFacts: "Known as the Brund Fell.", additionalInfo: "Gentle with Borrowdale views.", instagramReel: "", time: 1.5, weather: "", region: "Central Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Grasmoor", lat: 54.571, lon: -3.276, completed: false, height: "852m", hikeLength: 7, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Grasmoor/forecasts/852", carpark: "Lanthwaite Green", postcode: "CA13 0QH", what3words: "", funFacts: "Highest in the north-west fells.", additionalInfo: "Steep with Crummock Water views.", instagramReel: "", time: 3.5, weather: "", region: "North Western Fells", difficulty: "Hard", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Gray Crag", lat: 54.478, lon: -2.844, completed: false, height: "699m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Gray-Crag/forecasts/699", carpark: "Hartsop", postcode: "CA11 0NZ", what3words: "", funFacts: "Part of the Kentmere Round.", additionalInfo: "Moderate with eastern views.", instagramReel: "", time: 3.0, weather: "", region: "Far Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Graystones", lat: 54.637, lon: -3.308, completed: false, height: "452m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Graystones/forecasts/452", carpark: "Scawgill Bridge", postcode: "CA13 0SH", what3words: "", funFacts: "Gentle western fell.", additionalInfo: "Easy with Lorton Valley views.", instagramReel: "", time: 1.5, weather: "", region: "North Western Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Borne", lat: 54.534, lon: -3.353, completed: false, height: "616m", hikeLength: 5, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Borne/forecasts/616", carpark: "Bowness Knott", postcode: "CA23 3AQ", what3words: "", funFacts: "Near Ennerdale Water.", additionalInfo: "Moderate with western views.", instagramReel: "", time: 2.5, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Calva", lat: 54.670, lon: -3.104, completed: false, height: "690m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Calva/forecasts/690", carpark: "Orthwaite", postcode: "CA7 1HH", what3words: "", funFacts: "Remote northern fell.", additionalInfo: "Steep with Back o’ Skiddaw views.", instagramReel: "", time: 3.0, weather: "", region: "Northern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Cockup", lat: 54.684, lon: -3.173, completed: false, height: "526m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Cockup/forecasts/526", carpark: "Orthwaite", postcode: "CA7 1HH", what3words: "", funFacts: "Humorous name, quiet fell.", additionalInfo: "Gentle with northern views.", instagramReel: "", time: 2.0, weather: "", region: "Northern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Crag", lat: 54.513, lon: -3.118, completed: false, height: "449m", hikeLength: 3, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Crag/forecasts/449", carpark: "Watendlath", postcode: "CA12 5UW", what3words: "", funFacts: "Near Watendlath Tarn.", additionalInfo: "Easy with wooded slopes.", instagramReel: "", time: 1.5, weather: "", region: "Central Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Dodd", lat: 54.576, lon: -3.019, completed: false, height: "857m", hikeLength: 7, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Dodd/forecasts/857", carpark: "Threlkeld", postcode: "CA12 4TS", what3words: "", funFacts: "Broad summit with views.", additionalInfo: "Long ascent from Clough Head.", instagramReel: "", time: 3.5, weather: "", region: "Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Gable", lat: 54.482, lon: -3.219, completed: false, height: "899m", hikeLength: 5.8, gpxLink: "https://www.walklakes.co.uk/gpx/Great_Gable.gpx", osMapLink: "https://osmaps.ordnancesurvey.co.uk/54.482,-3.219", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Gable/forecasts/899", carpark: "Seathwaite Car Park", postcode: "CA12 5XQ", what3words: "///wet.muddy.trail", funFacts: "Iconic peak with dramatic shape.", additionalInfo: "Dedicated to WWI fallen soldiers.", instagramReel: "https://www.instagram.com/reel/great_gable", time: 3.0, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "Yes", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Mell Fell", lat: 54.621, lon: -2.934, completed: false, height: "537m", hikeLength: 2, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Mell-Fell/forecasts/537", carpark: "Mell Fell Road", postcode: "CA11 0NS", what3words: "", funFacts: "Isolated with gentle slopes.", additionalInfo: "Short walk with Ullswater views.", instagramReel: "", time: 1.0, weather: "", region: "Eastern Fells", difficulty: "Easy", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Rigg", lat: 54.484, lon: -2.992, completed: false, height: "766m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Rigg/forecasts/766", carpark: "Rydal", postcode: "LA22 9LW", what3words: "", funFacts: "On the Fairfield Horseshoe.", additionalInfo: "Moderate with eastern views.", instagramReel: "", time: 3.0, weather: "", region: "Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Great Sca Fell", lat: 54.691, lon: -3.135, completed: false, height: "651m", hikeLength: 5, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Great-Sca-Fell/forecasts/651", carpark: "Over Water", postcode: "CA7 1JL", what3words: "", funFacts: "Northern fell with gentle slopes.", additionalInfo: "Quiet with expansive views.", instagramReel: "", time: 2.5, weather: "", region: "Northern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Green Crag", lat: 54.373, lon: -3.225, completed: false, height: "489m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Green-Crag/forecasts/489", carpark: "Birker Fell Road", postcode: "LA20 6DT", what3words: "", funFacts: "Rugged southern fell.", additionalInfo: "Moderate with Eskdale views.", instagramReel: "", time: 2.0, weather: "", region: "Southern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Green Gable", lat: 54.486, lon: -3.211, completed: false, height: "801m", hikeLength: 5, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Green-Gable/forecasts/801", carpark: "Seathwaite", postcode: "CA12 5XJ", what3words: "", funFacts: "Near Great Gable.", additionalInfo: "Steep with western views.", instagramReel: "", time: 2.5, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "Yes", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Grey Crag", lat: 54.448, lon: -2.811, completed: false, height: "638m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Grey-Crag/forecasts/638", carpark: "Sadgill", postcode: "LA8 9ED", what3words: "", funFacts: "Part of the Kentmere Round.", additionalInfo: "Moderate with grassy slopes.", instagramReel: "", time: 3.0, weather: "", region: "Far Eastern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Grey Friar", lat: 54.396, lon: -3.161, completed: false, height: "773m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Grey-Friar/forecasts/773", carpark: "Wrynose Pass", postcode: "LA22 9JY", what3words: "", funFacts: "Near Coniston Old Man.", additionalInfo: "Steep with southern views.", instagramReel: "", time: 3.0, weather: "", region: "Southern Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Grey Knotts", lat: 54.514, lon: -3.228, completed: false, height: "697m", hikeLength: 5, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Grey-Knotts/forecasts/697", carpark: "Honister Pass", postcode: "CA12 5XN", what3words: "", funFacts: "Near Brandreth.", additionalInfo: "Moderate with western views.", instagramReel: "", time: 2.5, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Grisedale Pike", lat: 54.592, lon: -3.242, completed: false, height: "791m", hikeLength: 6, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Grisedale-Pike/forecasts/791", carpark: "Braithwaite", postcode: "CA12 5TW", what3words: "", funFacts: "Distinctive pointed summit.", additionalInfo: "Steep with Derwentwater views.", instagramReel: "", time: 3.0, weather: "", region: "North Western Fells", difficulty: "Hard", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" },
-            { name: "Grike", lat: 54.513, lon: -3.411, completed: false, height: "488m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Grike/forecasts/488", carpark: "Cold Fell Road", postcode: "CA22 2PN", what3words: "", funFacts: "Western fell with sea views.", additionalInfo: "Gentle with Ennerdale views.", instagramReel: "", time: 2.0, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" }
+                       { name: "Grike", lat: 54.513, lon: -3.411, completed: false, height: "488m", hikeLength: 4, gpxLink: "", osMapLink: "", mountainForecast: "https://www.mountain-forecast.com/peaks/Grike/forecasts/488", carpark: "Cold Fell Road", postcode: "CA22 2PN", what3words: "", funFacts: "Western fell with sea views.", additionalInfo: "Gentle with Ennerdale views.", instagramReel: "", time: 2.0, weather: "", region: "Western Fells", difficulty: "Moderate", scramble: "No", dogFriendly: "Yes", photo: "images/placeholder.jpg" }
         ];
 
         const topWainwrights = allWainwrights.filter(w => ["Blencathra", "Bowfell", "Catbells", "Coniston Old Man", "Great Gable"].includes(w.name));
 
-       async function fetchWeather(lat, lon) {
-    try {
-        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=cloudcover`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-        const weatherCode = data.current_weather.weathercode;
-        const weatherMap = { 
-            0: "☀️", 1: "☀️", 2: "⛅", 3: "☁️", 45: "🌫️", 51: "🌧️", 61: "🌧️", 71: "❄️", 95: "⛈️"
-        };
-        return weatherMap[weatherCode] || "❓";
-    } catch (error) {
-        console.error(`Error fetching weather for lat:${lat}, lon:${lon}:`, error);
-        return "❓";
-    }
-}
+        async function fetchWeather(lat, lon) {
+            try {
+                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=cloudcover`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.json();
+                const weatherCode = data.current_weather.weathercode;
+                const weatherMap = { 
+                    0: "☀️", 1: "☀️", 2: "⛅", 3: "☁️", 45: "🌫️", 51: "🌧️", 61: "🌧️", 71: "❄️", 95: "⛈️"
+                };
+                return weatherMap[weatherCode] || "❓";
+            } catch (error) {
+                console.error(`Error fetching weather for lat:${lat}, lon:${lon}:`, error);
+                return "❓";
+            }
+        }
 
         async function updateWeather() {
             const weatherPromises = allWainwrights.map(async (wainwright) => {
@@ -464,56 +415,32 @@
                 default: return "#ffffff";
             }
         }
-            function displayTopWainwrights() {
-    const topWainwrightsDiv = document.getElementById("top-wainwrights");
-    topWainwrightsDiv.innerHTML = "";
-    topWainwrights.forEach(wainwright => {
-        const button = document.createElement("button");
-        button.className = "button";
-        button.innerHTML = `
-            <span class="name">${wainwright.name}</span>
-            <span class="difficulty-circle" style="background-color: ${getDifficultyColor(wainwright.difficulty)}"></span>
-            <span class="height">${wainwright.height}</span>
-            <span class="weather">${wainwright.weather || '❓'}</span>
-            <input type="checkbox" ${wainwright.completed ? 'checked' : ''}>
-        `;
-        button.querySelector('input[type="checkbox"]').addEventListener("change", (e) => {
-            wainwright.completed = e.target.checked;
-            updateMarker(wainwright);
-            saveProgress();
-            updateProgressBar();
-            displayWainwrights(); // Sync with Info page
-        });
-        button.onclick = (e) => { if (e.target.type !== "checkbox") { showInfo(wainwright); openTab('info'); } };
-        topWainwrightsDiv.appendChild(button);
-    });
-}
 
-function displayWainwrights(filtered = allWainwrights) {
-    const wainwrightList = document.getElementById("wainwright-list");
-    if (!wainwrightList) return;
-    wainwrightList.innerHTML = "";
-    filtered.forEach(wainwright => {
-        const button = document.createElement("button");
-        button.className = "button";
-        button.innerHTML = `
-            <span class="name">${wainwright.name}</span>
-            <span class="difficulty-circle" style="background-color: ${getDifficultyColor(wainwright.difficulty)}"></span>
-            <span class="height">${wainwright.height}</span>
-            <span class="weather">${wainwright.weather || '❓'}</span>
-            <input type="checkbox" ${wainwright.completed ? 'checked' : ''}>
-        `;
-        button.querySelector('input[type="checkbox"]').addEventListener("change", (e) => {
-            wainwright.completed = e.target.checked;
-            updateMarker(wainwright);
-            saveProgress();
-            updateProgressBar();
-            displayWainwrights(filtered); // Sync with current filtered list
-        });
-        button.onclick = (e) => { if (e.target.type !== "checkbox") showInfo(wainwright); };
-        wainwrightList.appendChild(button);
-    });
-}
+        function displayTopWainwrights() {
+            const topWainwrightsDiv = document.getElementById("top-wainwrights");
+            if (!topWainwrightsDiv) return;
+            topWainwrightsDiv.innerHTML = "";
+            topWainwrights.forEach(wainwright => {
+                const button = document.createElement("button");
+                button.className = "button";
+                button.innerHTML = `
+                    <span class="name">${wainwright.name}</span>
+                    <span class="difficulty-circle" style="background-color: ${getDifficultyColor(wainwright.difficulty)}"></span>
+                    <span class="height">${wainwright.height}</span>
+                    <span class="weather">${wainwright.weather || '❓'}</span>
+                    <input type="checkbox" ${wainwright.completed ? 'checked' : ''}>
+                `;
+                button.querySelector('input[type="checkbox"]').addEventListener("change", (e) => {
+                    wainwright.completed = e.target.checked;
+                    updateMarker(wainwright);
+                    saveProgress();
+                    updateProgressBar();
+                    displayWainwrights(); // Sync with Info page
+                });
+                button.onclick = (e) => { if (e.target.type !== "checkbox") { showInfo(wainwright); openTab('info'); } };
+                topWainwrightsDiv.appendChild(button);
+            });
+        }
 
         function displayWainwrights(filtered = allWainwrights) {
             const wainwrightList = document.getElementById("wainwright-list");
@@ -534,6 +461,7 @@ function displayWainwrights(filtered = allWainwrights) {
                     updateMarker(wainwright);
                     saveProgress();
                     updateProgressBar();
+                    displayWainwrights(filtered); // Sync with current filtered list
                 });
                 button.onclick = (e) => { if (e.target.type !== "checkbox") showInfo(wainwright); };
                 wainwrightList.appendChild(button);
@@ -591,11 +519,6 @@ function displayWainwrights(filtered = allWainwrights) {
             `;
             infoDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-
-        const map = L.map("map").setView([54.5, -3.2], 10);
-        L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data: © OpenTopoMap (CC-BY-SA)'
-        }).addTo(map);
 
         const markers = {};
 
@@ -674,6 +597,12 @@ function displayWainwrights(filtered = allWainwrights) {
             document.getElementById(tabName).classList.add("active");
             document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add("active");
             if (tabName === 'tracker') {
+                if (!map) {
+                    map = L.map("map").setView([54.5, -3.2], 10);
+                    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                        attribution: 'Map data: © OpenTopoMap (CC-BY-SA)'
+                    }).addTo(map);
+                }
                 setTimeout(() => map.invalidateSize(), 100);
                 updateTrackerDisplay();
             }
@@ -693,6 +622,3 @@ function displayWainwrights(filtered = allWainwrights) {
     </script>
 </body>
 </html>
-
-
-             
