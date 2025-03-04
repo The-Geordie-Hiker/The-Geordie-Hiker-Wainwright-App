@@ -305,17 +305,13 @@
             aspect-ratio: 1 / 1;
         }
         #completion-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             font-size: 40px;
             font-weight: bold;
             color: white;
             text-shadow: 1px 1px 2px black;
         }
         #height-section {
-            margin-top: 30px;
+            margin-top: 50px;
             text-align: center;
             position: relative;
             max-width: 1200px;
@@ -323,7 +319,7 @@
         }
         #height-section h3 {
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         #height-line {
             width: 200px;
@@ -332,7 +328,7 @@
             transform: rotate(-45deg);
             position: relative;
             overflow: hidden;
-            margin: 30px auto 0 auto;
+            margin: 0 auto;
         }
         #height-line .progress {
             height: 100%;
@@ -344,7 +340,7 @@
         }
         #total-height {
             position: absolute;
-            top: -30px;
+            top: -40px;
             left: 180px;
             color: white;
             font-size: 14px;
@@ -356,7 +352,7 @@
             font-size: 14px;
             text-shadow: 1px 1px 2px black;
             transform: rotate(45deg);
-            bottom: 10px;
+            bottom: 20px;
         }
         #apply-filters {
             padding: 8px;
@@ -471,7 +467,7 @@
             <svg viewBox="0 0 36 36" width="100%" height="100%">
                 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#D3D3D3" stroke-width="4" fill="none" />
                 <path id="progress-path" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#00FF00" stroke-width="4" fill="none" stroke-dasharray="0, 100" />
-                <text id="completion-text" x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white"></text>
+                <text id="completion-text" x="18" y="20" text-anchor="middle" fill="white"></text>
             </svg>
         </div>
         <div id="height-section">
@@ -479,7 +475,7 @@
             <div id="height-line">
                 <div class="progress" style="width: 0%"></div>
                 <span id="total-height">73,000m</span>
-                <span id="current-height" style="left: 0; bottom: 10px;">0m</span>
+                <span id="current-height">0m</span>
             </div>
         </div>
     </div>
@@ -710,7 +706,7 @@
             const lineWidth = 200;
             const textPosition = (heightPercentage / 100) * lineWidth - 20;
             currentHeightText.style.left = `${Math.min(textPosition, lineWidth - 40)}px`;
-            currentHeightText.style.bottom = "10px";
+            currentHeightText.style.bottom = "20px";
         }
 
         function updateMarker(wainwright) {
