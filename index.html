@@ -18,13 +18,14 @@
             padding: 10px 0;
             text-align: center;
             width: 100%;
-            margin: 0 auto;
             max-width: 1200px;
+            margin: 0 auto;
         }
         h1 { 
             color: #ffffff;
             text-align: center; 
             margin: 10px 0; 
+            padding: 0;
         }
         .header-subtitle { 
             color: #ffffff;
@@ -32,14 +33,17 @@
             text-align: center; 
             display: block; 
             margin: 5px 0; 
+            padding: 0;
         }
         .filters { 
-            margin: 20px 0; 
+            margin: 20px auto; 
             display: flex; 
             justify-content: space-around; 
             flex-wrap: wrap; 
             gap: 10px; 
             padding: 0 20px; 
+            max-width: 1200px;
+            width: 100%;
         }
         .filters select { 
             padding: 8px; 
@@ -59,8 +63,8 @@
             flex-direction: column; 
             gap: 10px; 
             margin: 20px auto; 
-            width: 90vw; /* Almost full width */
-            max-width: 1200px; /* Match top-section */
+            max-width: 1200px;
+            width: 100%;
         }
         .button { 
             width: 100%; 
@@ -119,6 +123,7 @@
             text-shadow: none; 
             position: relative; 
             max-width: 1200px;
+            width: 100%;
         }
         .wainwright-info h3 { 
             font-size: 24px; 
@@ -154,8 +159,8 @@
             gap: 20px; 
             text-align: center; 
             padding: 0; 
-            width: 100%; 
-            max-width: 1200px; 
+            max-width: 1200px;
+            width: 100%;
         }
         .tab-button { 
             width: 50px; 
@@ -188,10 +193,6 @@
         #top10 h2 {
             color: white;
             text-align: center;
-        }
-        #top10 .button {
-            background-color: #36363a;
-            color: #ffffff;
         }
         #info {
             background-color: #121216;
@@ -249,6 +250,7 @@
             gap: 20px; 
             max-width: 1200px; 
             margin: 0 auto; 
+            width: 100%;
         }
         #tracker #map { 
             height: 500px; 
@@ -274,25 +276,40 @@
         #insights h2 {
             color: white;
             text-align: center;
-        }
-        #completion-text {
-            font-size: 48px;
-            font-weight: bold;
-            margin: 20px 0;
+            margin-bottom: 20px;
         }
         #progress-circle {
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             position: relative;
+        }
+        #completion-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+        }
+        #height-section {
+            margin-top: 50px;
+            text-align: center;
+            position: relative;
+            width: 200px;
+        }
+        #height-section h3 {
+            color: white;
+            margin-bottom: 10px;
         }
         #height-line {
             width: 200px;
-            height: 2px;
-            background-color: red;
-            transform: rotate(45deg);
-            margin-top: 40px;
+            height: 4px;
+            background-color: #D3D3D3;
+            transform: rotate(-45deg);
             position: relative;
             overflow: hidden;
+            margin: 20px auto;
         }
         #height-line .progress {
             height: 100%;
@@ -301,6 +318,19 @@
             left: 0;
             top: 0;
             transition: width 0.3s ease;
+        }
+        #total-height {
+            position: absolute;
+            top: -20px;
+            left: 180px;
+            color: white;
+            font-size: 14px;
+        }
+        #current-height {
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            transform: rotate(45deg);
         }
         #apply-filters {
             padding: 8px;
@@ -401,13 +431,20 @@
 
     <div id="insights" class="tab-content">
         <h2>Insights</h2>
-        <div id="completion-text"></div>
-        <svg id="progress-circle" viewBox="0 0 36 36">
-            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#FF0000" stroke-width="4" fill="none" />
-            <path id="progress-path" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#00FF00" stroke-width="4" fill="none" stroke-dasharray="0, 100" />
-        </svg>
-        <div id="height-line">
-            <div class="progress" style="width: 0%"></div>
+        <div id="progress-circle">
+            <svg viewBox="0 0 36 36" width="300" height="300">
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#D3D3D3" stroke-width="4" fill="none" />
+                <path id="progress-path" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#00FF00" stroke-width="4" fill="none" stroke-dasharray="0, 100" />
+                <text id="completion-text" x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white"></text>
+            </svg>
+        </div>
+        <div id="height-section">
+            <h3>Height Climbed So Far</h3>
+            <div id="height-line">
+                <div class="progress" style="width: 0%"></div>
+                <span id="total-height">73,000m</span>
+                <span id="current-height" style="left: 0; bottom: 10px;">0m</span>
+            </div>
         </div>
     </div>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -424,7 +461,7 @@
 
         const topWainwrights = allWainwrights.filter(w => ["Blencathra", "Bowfell", "Catbells", "Great Gable"].includes(w.name));
         const totalWainwrights = 214;
-        const totalHeight = 73000; // Approx total height of all 214 Wainwrights in meters
+        const totalHeight = 73000;
 
         async function fetchWeather(lat, lon) {
             try {
@@ -621,7 +658,7 @@
         function updateInsights() {
             const completedCount = allWainwrights.filter(w => w.completed).length;
             const progressPercentage = (completedCount / totalWainwrights) * 100;
-            const circumference = 100; // SVG stroke-dasharray total
+            const circumference = 100;
             const dashOffset = (progressPercentage / 100) * circumference;
 
             document.getElementById("completion-text").textContent = `${completedCount}/${totalWainwrights}`;
@@ -629,7 +666,15 @@
 
             const totalClimbedHeight = allWainwrights.filter(w => w.completed).reduce((sum, w) => sum + w.height, 0);
             const heightPercentage = (totalClimbedHeight / totalHeight) * 100;
-            document.querySelector("#height-line .progress").style.width = `${heightPercentage}%`;
+            const heightLine = document.querySelector("#height-line .progress");
+            heightLine.style.width = `${heightPercentage}%`;
+            
+            const currentHeightText = document.getElementById("current-height");
+            currentHeightText.textContent = `${totalClimbedHeight}m`;
+            const lineWidth = 200; // Matches #height-line width
+            const textPosition = (heightPercentage / 100) * lineWidth - 20; // Adjust for text width
+            currentHeightText.style.left = `${Math.min(textPosition, lineWidth - 40)}px`; // Cap to avoid overflow
+            currentHeightText.style.bottom = "10px";
         }
 
         function updateMarker(wainwright) {
