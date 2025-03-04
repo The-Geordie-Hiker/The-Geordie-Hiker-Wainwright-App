@@ -58,6 +58,17 @@
             background-color: #36363a; 
             color: #ffffff; 
         }
+        #weather-key {
+            max-width: 1200px;
+            width: 100%;
+            margin: 10px auto;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+        #weather-key span {
+            margin: 0 10px;
+        }
         .button-container { 
             display: flex; 
             flex-direction: column; 
@@ -193,6 +204,9 @@
         #top10 h2 {
             color: white;
             text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
         #info {
             background-color: #121216;
@@ -207,6 +221,9 @@
         #info h2 {
             color: white;
             text-align: center;
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            width: 100%;
         }
         #tracker { 
             padding-top: 40px; 
@@ -276,31 +293,37 @@
         #insights h2 {
             color: white;
             text-align: center;
-            margin-bottom: 20px;
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            width: 100%;
         }
         #progress-circle {
-            width: 300px;
-            height: 300px;
+            width: 90vw;
+            max-width: 1000px;
+            height: auto;
             position: relative;
+            aspect-ratio: 1 / 1;
         }
         #completion-text {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 48px;
+            font-size: 40px;
             font-weight: bold;
             color: white;
+            text-shadow: 1px 1px 2px black;
         }
         #height-section {
-            margin-top: 50px;
+            margin-top: 30px;
             text-align: center;
             position: relative;
-            width: 200px;
+            max-width: 1200px;
+            width: 100%;
         }
         #height-section h3 {
             color: white;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         #height-line {
             width: 200px;
@@ -309,7 +332,7 @@
             transform: rotate(-45deg);
             position: relative;
             overflow: hidden;
-            margin: 20px auto;
+            margin: 30px auto 0 auto;
         }
         #height-line .progress {
             height: 100%;
@@ -321,16 +344,19 @@
         }
         #total-height {
             position: absolute;
-            top: -20px;
+            top: -30px;
             left: 180px;
             color: white;
             font-size: 14px;
+            text-shadow: 1px 1px 2px black;
         }
         #current-height {
             position: absolute;
             color: white;
             font-size: 14px;
+            text-shadow: 1px 1px 2px black;
             transform: rotate(45deg);
+            bottom: 10px;
         }
         #apply-filters {
             padding: 8px;
@@ -412,6 +438,16 @@
             </select>
             <button id="apply-filters" onclick="applyFilters()">Apply</button>
         </div>
+        <div id="weather-key">
+            <span>☀️ Clear/Sunny</span>
+            <span>⛅ Partly Cloudy</span>
+            <span>☁️ Cloudy</span>
+            <span>🌫️ Foggy</span>
+            <span>🌧️ Rainy</span>
+            <span>❄️ Snowy</span>
+            <span>⛈️ Stormy</span>
+            <span>❓ Unknown</span>
+        </div>
         <div id="wainwright-list" class="button-container"></div>
         <div id="info-container"></div>
     </div>
@@ -423,7 +459,7 @@
             <div id="progress-text"></div>
         </div>
         <h1>Wainwright Tracker</h1>
-        <p style="text-align: center; font-size: 0.9em; color: #666;">Progress saves locally—use the same device and browser!</p>
+        <p style="text-align: center; font-size: 0.9em; color: #666; max-width: 1200px; margin: 0 auto; width: 100%;">Progress saves locally—use the same device and browser!</p>
         <div id="container">
             <div id="map"></div>
         </div>
@@ -432,7 +468,7 @@
     <div id="insights" class="tab-content">
         <h2>Insights</h2>
         <div id="progress-circle">
-            <svg viewBox="0 0 36 36" width="300" height="300">
+            <svg viewBox="0 0 36 36" width="100%" height="100%">
                 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#D3D3D3" stroke-width="4" fill="none" />
                 <path id="progress-path" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#00FF00" stroke-width="4" fill="none" stroke-dasharray="0, 100" />
                 <text id="completion-text" x="50%" y="50%" text-anchor="middle" dy=".3em" fill="white"></text>
@@ -465,7 +501,7 @@
 
         async function fetchWeather(lat, lon) {
             try {
-                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}¤t_weather=true&hourly=cloudcover`);
+                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=cloudcover`);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.json();
                 const weatherCode = data.current_weather.weathercode;
@@ -671,9 +707,9 @@
             
             const currentHeightText = document.getElementById("current-height");
             currentHeightText.textContent = `${totalClimbedHeight}m`;
-            const lineWidth = 200; // Matches #height-line width
-            const textPosition = (heightPercentage / 100) * lineWidth - 20; // Adjust for text width
-            currentHeightText.style.left = `${Math.min(textPosition, lineWidth - 40)}px`; // Cap to avoid overflow
+            const lineWidth = 200;
+            const textPosition = (heightPercentage / 100) * lineWidth - 20;
+            currentHeightText.style.left = `${Math.min(textPosition, lineWidth - 40)}px`;
             currentHeightText.style.bottom = "10px";
         }
 
